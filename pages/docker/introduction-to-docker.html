@@ -89,9 +89,55 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                   
+                    <h3>Docker Introduction</h3>
+                    
                   <p>
-                    Docker, docker docker docker docker 
+                    Docker,  Linux sistem imajlarını versiyonlayan açık kaynaklı bir sanallaştırma ve konteyner teknolojisidir. Uygulama geliştirme, çalıştırma ve uygulamaları taşımak için konteynerler kullanan bir platformdur.
+                      
                   </p>
+                    
+                   <p>
+                        <b>Docker Concepts</b>
+                   </p>
+                    
+                  
+                     <ul>
+                        <li> <b>Build: </b> 
+                            İzole edilmiş uygulamalar geliştirebilmemiz için bize araçlar sunar. 
+                            Uygulamamızı ve uygulamamızın çalışabilmesi için gerekli olan bağımlılıklar ve altyapı ile
+                            read-only şekilde paketlememize olanak sağlar. 
+                            Bu pakete <b>“Docker Image”</b> adı verilir. </li>
+                         
+                         <li> <b>Ship: </b> 
+                            Uygulamamızı (Docker image) başkaları ile paylaşabilmemizi sağlar.
+                             Docker imajları Docker Registry lerde saklanabilir, paylaşılabilir ve yönetilebilir. 
+                             Docker Hub herkese açık bir Docker Registry dir. Ve Tüm docker imajları için varsayılan/default registry Docker Hub’ dır.
+                             Ancak özel/private registry ler de oluşturabilmek mümkün. </li>
+                         
+                         <li> <b>Run: </b> 
+                            Uygulamalar/imajlar deploy edilebilir, ölçeklenebilir, yönetilebilir. 
+                             Uygulamalarımız docker container içerisinde çalıştırılabilir, durdurulabilir, silinebilir, ve taşınabilir durumdadır. </li>
+                         
+                        </ul>
+                    
+                    <p>Klasik VM ler yerine uygulamayı bir konteyner içerisine alarak izole eder. Konteyner içerisinde ise uygulamanın hayata geçmesi için gerekli minimum gereksinimler bulunur.&nbsp;Konteyner tabanlı sanallaştırma, farklı/birden fazla guest instance çalıştırabilmek için host makineni işletim sisteminin çekirdeğini/kernel kullanır.</p>
+<p>Her Konteyner;</p>
+<ul>
+<li>Kendi dosya sistemine,</li>
+<li>Kendi processlerine,</li>
+<li>Kendi Memory sine,</li>
+<li>Kendi ağ portlarına</li>
+</ul>
+<p>sahiptir.</p>
+<p>&nbsp;</p>
+<p>Docker konteyner oluştururken linux sistem imajlarını kulllanır. Bu imajlar uygulamamızın çalışabileceği bir ortam sağlayabildiği gibi tümüyle bir işletim sistemi kadar kaynak gereksinimi olmadığı için VM lerden bu yönüyle avantajlıdır. Aynen sanal makinelerde olduğu gibi konteynerler arasında kaynak paylaşımı yapabilir, kullanacakları kaynakları belirleyebilirsiniz. Ayrıca konteynerleri birbirleri ile sembolik olarak ilişkilendirebilmek de mümkün.</p>
+<p>&nbsp;</p>
+<p>Docker ve VM arasındaki en belirgin fark docker ile tam bir sistem imajına ve hypervisor katmanına ihtiyaç duymuyor olmamız. Bu konu ile ilgili detaylı bilgiyi <a href="https://blog.kodcu.com/2015/06/docker-nedir-neden-kullanilir/"> bu linke </a> tıklayarak edinebilirsiniz.</p>
+<p>&nbsp;</p>
+                    
+                        
+                    
+                    
               
                 </div>
             </div>
