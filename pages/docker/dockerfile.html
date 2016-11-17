@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dockerfile and Dockerfile Instructions</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://demirmustafa.github.io/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="https://demirmustafa.github.io/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://demirmustafa.github.io/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="https://demirmustafa.github.io/index.html">Home Page</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="https://demirmustafa.github.io/index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="https://demirmustafa.github.io/about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="https://demirmustafa.github.io/pages/docker/introduction-to-docker.html">Docker</a>
+                    </li>
+                    <li>
+                        <a href="https://demirmustafa.github.io/pages/spring/spring-videolari.html">Spring Framework</a>
+                    </li>
+                    <li>
+                        <a href="https://demirmustafa.github.io/contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('https://demirmustafa.github.io/img/docker-image.png')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Introduction to Dockerfile</h1>
+                        <h2 class="subheading">Quick Intro About Dockerfile Usage</h2>
+                        <span class="meta">Posted by <a href="about.html">Mustafa Demir</a> on November 17, 2016</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+                    <h3>Dockerfile and Dockerfile Instructions</h3>
+                    
+                  <p><em><strong>Dockerfile &nbsp;</strong></em></p>
+<p>Dockerfile<i></i>, Docker imajları inşa etmek için kullanılan, içerisinde imaj oluşturma için gerekli talimatların tanımlandığı bir konfigürasyon dosyasıdır. Bu dosyada yapılan tanımlamalarla imaj oluşturmak için yapılması gerekenler tanımlanır.</p>
+<p>&nbsp;</p>
+<p><em><strong>Dockerfile Instructions</strong></em></p>
+<p>Talimatlar, imaj oluşturmada neler yapılması gerektiğini belirtir/tanımlar.</p>
+<ul>
+<li><strong>FROM:&nbsp;</strong>imaj oluştururken hangi imajın taban alınması gerektiğini belirtir. (Örnek/Ex: FROM ubuntu:14.04)</li>
+</ul>
+<p><strong>FROM <em>java:8</em></strong> dediğimiz zaman debian-jessie üzerine java8 kurulu olan bir sistem imajını taban alacağımızı belirtiriz. Hangi imajların hangi imajları taban aldığını Docker Hub üzerinden imajların Dockerfile larını inceleyerek ve bu dosyaların FROM kısımlarından hiyerarşik olarak geriye doğru giderek görebiliriz. Çünkü docker imajları arasında kalıtım vardır. “Maven parent” kullanımı gibi birbirlerini kalıtabilirler.</p>
+<ul>
+<li><strong>MAINTAINER:&nbsp;</strong>Maintainer talimatı/komutu oluşturulan imaj için “author” alanı ayarlamamıza yarar.</li>
+<li><strong>RUN:&nbsp;</strong>İmaj oluşturulması esnasında çalıştırılacak olan komutların belirlendiği dockerfile talimatıdır.&nbsp;Örneğin herhangi bir imajı base alıp onun üzerine eklemeler yapmak, ihtiyacınız doğrultusunda farklı programlar kurmak istiyosunuz. Bu amaçla RUN komutunu kullanabilirsiniz.</li>
+</ul>
+<p>Ex:</p>
+<p>RUN apt-get install vim<br>
+RUN apt-get install curl<br>
+Aynı işi yapan birden fazla RUN komutunu bir arada kullanabiliriz. Örneğin yukarıda iki adet “<strong>install</strong>” komutu var ve bunları şu şekilde yazabiliriz.</p>
+<p><strong>RUN apt-get update &amp;&amp; apt-get install \</strong><br>
+<strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;curl \</strong><br>
+<strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;vim</strong></p>
+<p>Ayrıca ‘&amp;’kullanmadan birden fazla run komutunu bir arada kullanmak ta mümkün.</p>
+<ul>
+<li><strong>CMD:&nbsp;</strong>Bir konteyner oluşturulduğunda varsayılan olarak çalıştırılacak komutu tanımlar. &nbsp;Aşağıdaki resimde verilen örnekte görüldüğü üzere 2 farklı kullanımı mevcuttur.<a href="./Dockerfile &amp; Dockerfile Instructions – Javalog_files/Screenshot-from-2016-09-05-20-16-02.png"><img class="wp-image-230 size-full alignleft" src="./Dockerfile &amp; Dockerfile Instructions – Javalog_files/Screenshot-from-2016-09-05-20-16-02.png" alt="Screenshot from 2016-09-05 20-16-02" width="548" height="99" srcset="http://www.javalog.org/wp-content/uploads/2016/09/Screenshot-from-2016-09-05-20-16-02.png 548w, http://www.javalog.org/wp-content/uploads/2016/09/Screenshot-from-2016-09-05-20-16-02-300x54.png 300w, http://www.javalog.org/wp-content/uploads/2016/09/Screenshot-from-2016-09-05-20-16-02-410x74.png 410w, http://www.javalog.org/wp-content/uploads/2016/09/Screenshot-from-2016-09-05-20-16-02-100x18.png 100w, http://www.javalog.org/wp-content/uploads/2016/09/Screenshot-from-2016-09-05-20-16-02-275x50.png 275w" sizes="(max-width: 548px) 100vw, 548px"></a></li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Bir Dockerfile içinde yalnızca bir CMD bulunmalıdır.</p>
+<ul>
+<li><strong>ENTRYPOINT: </strong>Konteyner çalıştığında çalıştırılması gereken komutların tanımlandığı alandır.</li>
+</ul>
+<p>Örneğin;</p>
+<p>ENTRYPOINT [“java”,”-jar”,”myApp.jar”]</p>
+<ul>
+<li><strong>EXPOSE:&nbsp;</strong>Konteynere hangi ağ protunu dinlemesi gerektiğini söyler. (Örnek: EXPOSE 9090 )</li>
+<li><strong>ADD:&nbsp;</strong>Bu komut herhangi bir dosyayı ya da klasörü oluşturacağımız konteynerin dosya sistemine kopyalamak için kullanılır. Komutla birlikte kaynak, hedef klasör ve dosyanın ya da klasörün hangi isimle kopyalanacağı belirtilmelidir.</li>
+</ul>
+<p>Örneğin bir Maven projemiz olduğunu varsayalım. Ve projeyi build edip jar dosyamızı /target klasörü altında elde ettiğimizi varsayalım.</p>
+<p>ADD /target/myApp.jar app.jar</p>
+<p>şeklinde bir kullanım söz konusu olduğunda target altında “myApp” adındaki jar dosyası konteyner içerisinde app.jar adı ile kopyalanacak.</p>
+<p>&nbsp;</p>   
+                        
+                    
+                    
+              
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.facebook.com/wora94" title="Facebook">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/javalog_org" title="Twitter">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/demirmustafa/" title="GitHub">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://tr.linkedin.com/in/mustafa-demir-1634b294" title="LinkedIn">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.youtube.com/channel/UC2J5Vhpe7_x_t-KFIwlVaLA" title="YouTube">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-youtube-play fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="mailto:g.demirmustafa@gmail.com" title="Email">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-send fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                </div>
+                
+            
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://demirmustafa.github.io/js/jquery-3.1.1.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://demirmustafa.github.io/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="https://demirmustafa.github.io/js/jqBootstrapValidation.js"></script>
+    <script src="https://demirmustafa.github.io/js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="https://demirmustafa.github.io/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
+
