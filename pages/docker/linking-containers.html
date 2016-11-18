@@ -96,7 +96,7 @@
                     
                   <p>Bu yazımda docker konteynırlarının birbirleri ile nasıl ilişkilendirildiğinden bahsedeceğim. Yazı başlığından da anlaşılacağı üzere bu konteynırlar birbiri ile ilişkilendirilebilir. Ve bu ilişki neticesinde iki konteynır birbiri ile konuşabilir hale gelir.</p>
 <p>Linking yani link verme, iki konteynırın birbiri ile güvenli bir şekilde haberleşmesi ve birbirlerine veri aktarabilmesidir. Bu iki konteynır arasındaki ilişki alıcı-kaynak &nbsp;ilişkisidir ve öncelikle kaynak oluşturulmalıdır.</p>
-<p><a href="./Docker_ Linking Containers – Javalog_files/docker_linking_containers.png"><img class="wp-image-234 alignnone" src="./Docker_ Linking Containers – Javalog_files/docker_linking_containers.png" alt="docker_linking_containers" width="375" height="159" srcset="http://www.javalog.org/wp-content/uploads/2016/09/docker_linking_containers.png 1890w, http://www.javalog.org/wp-content/uploads/2016/09/docker_linking_containers-300x127.png 300w, http://www.javalog.org/wp-content/uploads/2016/09/docker_linking_containers-768x326.png 768w, http://www.javalog.org/wp-content/uploads/2016/09/docker_linking_containers-1024x435.png 1024w, http://www.javalog.org/wp-content/uploads/2016/09/docker_linking_containers-700x297.png 700w, http://www.javalog.org/wp-content/uploads/2016/09/docker_linking_containers-410x174.png 410w, http://www.javalog.org/wp-content/uploads/2016/09/docker_linking_containers-100x42.png 100w, http://www.javalog.org/wp-content/uploads/2016/09/docker_linking_containers-275x117.png 275w" sizes="(max-width: 375px) 100vw, 375px"></a></p>
+<p><img class="wp-image-234 alignnone" src="https://demirmustafa.github.io/img/docker_linking_containers.png" sizes="(max-width: 375px) 100vw, 375px"></p>
 <p>Link vermek için kullanılan komut “–link” komutudur.</p>
 <p>Konteynırların birbiri ile haberleşmesi özellikle mikkroservis uygulama geliştirme yaklaşımı için gereklidir. Ancak konteynırların birbirleri ile haberleşmesi bildiğimiz IP adres ve port bilgisi ile değil sembolik olarak yapılır. Yani iki konteynır birbiri ile ilişkilendirilirken konteynır isimleri kullanılır. Bu çok büyük bir avantaj.</p>
 <p>Şimdi küçük bir örnek yapalım.</p>
@@ -104,11 +104,74 @@
 
 <p>
 	<code>
-		docker pull ubuntu:14.04
+		docker pull ubuntu:14.04 <br/>
 		docker pull postgres
 
 	</code>
 </p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>NOT: Eğer pull işleminde versiyon belirtirseniz o versiyon indirilir. Eğer ki versiyon bildirmezseniz “latest” tagina sahip imaj indirilecektir.</p>
+<p>Şimdi öncelikle kaynak &nbsp;konteynırımızı çalıştıralım. Yani postgre.</p>
+
+<p>
+	<code>
+		docker run -d --name dbms
+	</code>
+</p>
+
+<p>Eğer bilgisayarınıda docker engine düzgün bir şekilde kurulmuşsa bir konteyner oluşturulup çalıştırılacaktır. Hali hazırda çalışan konteynırlarınızı “docker ps” ile daha önceden oluşturulmuş/çalıştırılmış olan konteynırları ise “docker ps -a” ile görebilirsiniz.</p>
+
+<p><img class="wp-image-235 alignnone" src="https://demirmustafa.github.io/img/postgres.png"sizes="(max-width: 861px) 100vw, 861px"></p>
+<p>Şimdide alıcı/recipient konteynırı çalıştıralım yani ubuntuyu.</p>
+
+<p>
+	<code>
+		
+
+		docker run -it --name mywebsite --link dmbs:postgresdatabase bash
+	</code>
+</p>
+
+
+<p>Bu komut ile mywebsite adında bir konteynır oluşturuldu ve dbms konteynırına bağlandı. Ancak bağlanırken dbms adını değil postgresdatabase adında bir geçici isim kullandık. “-it” komutu ile bize bu konteynıra ait bir terminal açılmasını sağladık. Yani konteynır içine girdik.</p>
+<p><img class="alignleft wp-image-236 " src="https://demirmustafa.github.io/img/terminal.png" sizes="(max-width: 782px) 100vw, 782px"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Şimdi de</p>
+
+<p>
+	<code>
+		
+		cat /etc/hosts
+	</code>
+</p>
+
+<p>komutunu çalıştıralım. Ve aşağıda&nbsp;görüldüğü gibi postgresdatabase geçici adını verdiğimiz konteynırın ip adresini görebiliyoruz.</p>
+<p><img class="alignleft wp-image-237 " src="https://demirmustafa.github.io/img/ip.png" sizes="(max-width: 320px) 100vw, 320px"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Teyit etmek için hemen exit komutunu çalıştıralım ve ubuntu:14.04 &nbsp;imajını çalıştıran konteynırdan çıkış yapalım. Ve sonra,</p>
+
+<p>
+	<code>
+			
+		docker inspect dbms | grep IPAddress
+	</code>
+</p>
+
+<p>komutunu çalıştıralım. Ve sonuç:</p>
+<p><img class="alignleft wp-image-238 " src="https://demirmustafa.github.io/img/sonuç.png" sizes="(max-width: 466px) 100vw, 466px"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Görüldüğü gibi burada ubuntu:14.04 imajını taşıyan “mywebsite” adındaki konteynırı, postgresql imajını taşıyan “dbms” adındaki konteynıra bağlamış olduk. &nbsp;Ve bunu da küçük bir IP sorgulamasıyla teyit ettik. Bu yazınında sonuna geldik. Takipte kalın 
+
                         
                     
                     
