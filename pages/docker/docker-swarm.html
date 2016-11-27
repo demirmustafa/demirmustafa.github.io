@@ -123,7 +123,7 @@
                   			Aşağıdaki resimde görüldüğü gibi pi' lere ssh ile bağlandım ve hepsinde aynı docker-engine sürümü kurulu.
                   		</p>
 
-                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/ssh-pi.png"  width="729" height="64"  sizes="(max-width: 729px) 100vw, 729px"></p>
+                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/ssh-pi.png"  width="810" height="854"  sizes="(max-width: 900px) 100vw, 900px"></p>
 
                   		<p>
                   			Burada ben pi01' i manager diğer ikisini worker node olarak kullanacağım. Swarm oluşturmak için manager olarak kullanacağımız makinenin terminalinde,
@@ -144,7 +144,7 @@
                   			Örneğin benim makinemde, yani pi01'de, terminale ifconfig yazıyorum. Ve burada <b>'docker0' </b> yazan yerdeki adresi <MANAGER-IP> yerine yazıyorum.
                   		</p>
 
-                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/docker-ip.png"  width="729" height="64"  sizes="(max-width: 729px) 100vw, 729px"></p>
+                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/docker ip.png"  width="645" height="155"  sizes="(max-width: 650px) 100vw, 650px"></p>
 
                   		<p>
                   			
@@ -191,7 +191,7 @@
                   			Şu an bizim swarm' ımızda sadece manager var.
 
                   		</p>
-                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/swarm-manager.png"   width="729" height="64"  sizes="(max-width: 729px) 100vw, 729px"></p>
+                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/swarm-manager.png"   width="623" height="78"  sizes="(max-width: 729px) 100vw, 729px"></p>
 
                   		<p>
                   			Şimdi sırası ile pi02 ve pi03 makinelerimi token'ı kullanarak swarm' a ekliyorum.
@@ -215,19 +215,19 @@
 
 
 
-                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/pi02-worker.png"     width="729" height="64"  sizes="(max-width: 729px) 100vw, 729px"></p>
+                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/pi02-worker.png"     width="1225" height="57"  sizes="(max-width: 1250px) 100vw, 1250px"></p>
 
                   		<p>
                   			Aynı işlemi pi03 için de yapıyorum.
                   		</p>
 
-                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/pi03-worker.png"      width="729" height="64"  sizes="(max-width: 729px) 100vw, 729px"></p>
+                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/pi03-worker.png"      width="1261" height="80"  sizes="(max-width: 1265px) 100vw, 1265px"></p>
 
                   		<p>
                   			Şimdi teyit etmek için pi01 yani swarm manager terminalinde <b>"docker node ls"</b> komutunu çalıştırıyorum.
                   		</p>
 
-                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/swarm-final.png"     width="729" height="64"  sizes="(max-width: 729px) 100vw, 729px"></p>
+                  		<p><img class="alignleft wp-image-243 size-full" src="https://demirmustafa.github.io/img/swarm-final.png"     width="641" height="128"  sizes="(max-width: 729px) 100vw, 729px"></p>
 
                   		<p>
                   			görüldüğü gibi pi01 leader, pi02 ve pi03  ise worker olarak swarm' a dahil olmuş ve hepsi ayakta/hazır durumdalar.
